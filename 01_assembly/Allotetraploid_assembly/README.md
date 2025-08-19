@@ -69,7 +69,7 @@ Step4.1_subgenome_orientation.zsh
 
 Step4.2_Output_assembly.R
 
-##### In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to resolve the chromosomal origins.
+##### In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to split the subgenome chromosomal.
 
 #### Output unassembled sequence
 
