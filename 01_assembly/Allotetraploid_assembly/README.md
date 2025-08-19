@@ -63,9 +63,9 @@ Step4.1_subgenome_orientation.zsh
 
 Step4.2_Output_assembly.R
 
-# In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to resolve the chromosomal origins.
+#### In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to resolve the chromosomal origins.
 
-#### Output unassembled sequence
+### Output unassembled sequence
 
 ````R
 source('/filer-dg/agruppen/seq_shared/mascher/code_repositories/triticeae.bitbucket.io/R/pseudomolecule_construction.R')
