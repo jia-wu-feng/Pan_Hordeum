@@ -49,23 +49,29 @@ Step1.3_Guide_map.zsh
 Step1.4_Create_assembly_object.R
 
 
-### Step 2 Subgenome phasing
+### Step 2 
+
+#### Subgenome phasing
 
 Step2_Subgenome_Phasing.R
 
-### Step 3 Output assemly_V1
+### Step 3 
+
+#### Output primary assembly
 
 Step3_Output_primary_assembly.R
 
-### Step 4 Ancestral genome-guided subgenome orientation and final output
+### Step 4 
+
+#### Ancestral genome-guided subgenome orientation and final output
 
 Step4.1_subgenome_orientation.zsh
 
 Step4.2_Output_assembly.R
 
-#### In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to resolve the chromosomal origins.
+##### In allopolyploids without an available ancestral genome, SubPhaser(https://github.com/zhangrengang/SubPhaser) is employed to resolve the chromosomal origins.
 
-### Output unassembled sequence
+#### Output unassembled sequence
 
 ````R
 source('/filer-dg/agruppen/seq_shared/mascher/code_repositories/triticeae.bitbucket.io/R/pseudomolecule_construction.R')
