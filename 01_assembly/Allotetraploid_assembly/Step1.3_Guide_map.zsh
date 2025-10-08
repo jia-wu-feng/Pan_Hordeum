@@ -8,7 +8,7 @@ fasta='/filer-dg/agruppen/dg6/fengj/panhordeum/assembly/hjubatum/hjubatum_hifias
 gmap_build='/opt/Bio/gmap/2019-09-12/bin/gmap_build'
 dir=$fasta:h'/gmap_index'
 name=${fasta:t:r}
-#$gmap_build $fasta -D $dir -d $name > ${name}_gmap_build.out  2> ${name}_gmap_build.err
+$gmap_build $fasta -D $dir -d $name > ${name}_gmap_build.out  2> ${name}_gmap_build.err
 
 #Alignment
 gmapl='/opt/Bio/gmap/2019-09-12/bin/gmapl'
