@@ -26,7 +26,8 @@ list<-c("Hordeum_bogdanii","Hordeum_brevisubulatum","Hordeum_bulbosum_Hap1",
         "Hordeum_marinum_BCC2001","Hordeum_murinum_BCC2017","Hordeum_murinum_Sub1",
         "Hordeum_murinum_Sub2","Hordeum_muticum","Hordeum_patagonicum","Hordeum_pubiflorum",
         "Hordeum_pusillum","Hordeum_roshevitzii","Hordeum_secalinum_Sub1","Hordeum_secalinum_Sub2",
-        "Hordeum_stenostachys","Hordeum_vulgare")
+        "Hordeum_stenostachys","Hordeum_vulgare","Hordeum_gussoneanum_Sub1","Hordeum_gussoneanum_Sub2",
+        "Hordeum_parodii_Sub1","Hordeum_parodii_Sub2","Hordeum_parodii_Sub3")
 
 ### Read all alignment files based on the reference genome and store them
 
@@ -34,7 +35,7 @@ for(ref_specie in list){
   print(paste("Ref:",ref_specie))
   for(qry_specie in list){
     print(paste("Qry:",qry_specie))
-    paf<-read_paf(paste("paf/",ref_specie,"..",qry_specie,".paf",sep = ""),primary_only=T)
+    paf<-read_paf(paste("paf2/",ref_specie,"..",qry_specie,".paf",sep = ""),primary_only=T)
     mappingq=quantile(paf$mapq,0.80)
     mappinga=quantile(paf$alnlen,0.80)
     setorder(paf,reference,reference_start)-> pafl
@@ -50,12 +51,12 @@ for(ref_specie in list){
   
   finalpaf[,timeid:=paste(refsp,qrysp)]
   
-  fread("/Volumes/agruppen/dg7/fengj/panh2/genome_size/divergence_times.csv")-> divtime
+  fread("/Users/Feng/Nextcloud2/Hordeum Pangenome/3 review/tree fig/divergence_times.csv")-> divtime
   divtime[,timeid:=paste(Species1,Species2)]
   
   divtime[finalpaf,on=.(timeid)][refsp!=qrysp]-> finalpaf
   
-  saveRDS(finalpaf,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment/",ref_specie,"_alignment.RDS",sep = ""))
+  saveRDS(finalpaf,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment2/",ref_specie,"_alignment.RDS",sep = ""))
 }
 
 ###Read coverage of reference/query genome alignments
@@ -64,10 +65,10 @@ for(ref_specie in list){
     print(paste("Ref:",ref_specie))
     for(qry_specie in list){
     print(paste("Qry:",qry_specie))
-    cov1<-fread(paste("paf/",ref_specie,"..",qry_specie,".ref.cov",sep = ""),header = F)
+    cov1<-fread(paste("paf2/",ref_specie,"..",qry_specie,".ref.cov",sep = ""),header = F)
     cov1[,refsp:=ref_specie]
     cov1[,qrysp:=qry_specie]
-    cov2<-fread(paste("paf/",ref_specie,"..",qry_specie,".qry.cov",sep = ""),header = F)
+    cov2<-fread(paste("paf2/",ref_specie,"..",qry_specie,".qry.cov",sep = ""),header = F)
     cov2[,refsp:=ref_specie]
     cov2[,qrysp:=qry_specie]
     cov1[,color:="b1"]
@@ -80,7 +81,7 @@ for(ref_specie in list){
     }
   }
   ### Mark species separation time
-  fread("/Volumes/agruppen/dg7/fengj/panh2/genome_size/divergence_times.csv")-> divtime
+  fread("/Users/Feng/Nextcloud2/Hordeum Pangenome/3 review/tree fig/divergence_times.csv")-> divtime
   divtime[,timeid:=paste(Species1,Species2)]
   ### Normailzed reference coverage based on average coverage
   finalcov1[,timeid:=paste(refsp,qrysp)]
@@ -101,6 +102,6 @@ for(ref_specie in list){
   finalcov2[,color:=">0.5"]
   finalcov2[ncov<=0.5,color:="<=0.5"]
   
-  saveRDS(finalcov1,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment/",ref_specie,"_cov1.RDS",sep = ""))
-  saveRDS(finalcov2,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment/",ref_specie,"_cov2.RDS",sep = ""))
+  saveRDS(finalcov1,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment2/",ref_specie,"_cov1.RDS",sep = ""))
+  saveRDS(finalcov2,file=paste("/Volumes/agruppen/dg7/fengj/panh2/chr4H/alignment2/",ref_specie,"_cov2.RDS",sep = ""))
 }
