@@ -1,2 +1,2 @@
 # Pan_Hordeum
-Code for Article "A genus-wide pangenome of Hordeum"
+Code for Article "Structural and regulatory evolution across the genus Hordeum"
